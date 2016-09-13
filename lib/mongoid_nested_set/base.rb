@@ -46,8 +46,8 @@ module Mongoid::Acts::NestedSet
         field outline_number_field_name, :type => String if outline_number_field_name
         field :depth, :type => Integer
 
-        has_many   :children, :class_name => self.name, :foreign_key => parent_field_name, :inverse_of => :parent, :order => left_field_name.to_sym.asc
-        belongs_to :parent,   :class_name => self.name, :foreign_key => parent_field_name
+        has_many   :children, :class_name => self.name, :foreign_key => parent_field_name, :inverse_of => :parent, :order => left_field_name.to_sym.asc, validate: false
+        belongs_to :parent,   :class_name => self.name, :foreign_key => parent_field_name, validate: false
 
         attr_accessor :skip_before_destroy
 
